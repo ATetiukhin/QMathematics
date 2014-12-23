@@ -1,0 +1,120 @@
+set(APP_NAME App)
+
+set(MAIN_WINDOW main_window/)
+set(DATABASE_HELPER database_helper)
+
+set(QSQL_CONNECTION_DIALOG dialogs/qsql_connection_dialog)
+set(SELECT_TASK_DIALOG dialogs/select_task_dialog)
+
+set(TASKS tasks)
+set(TASKS_FACTORY tasks/task_factory)
+
+set(EQUATION tasks/equation)
+set(EQUATION_WIDGET tasks/equation/equation_widget)
+set(TYPE_TASK_EQUATION tasks/equation/type_task_equation)
+set(PLOT_EQUATION tasks/equation/plot_dialog)
+
+set(PLUGIN_INTERFACE ../plugins)
+
+include_directories(${MAIN_WINDOW})
+include_directories(${DATABASE_HELPER})
+include_directories(${QSQL_CONNECTION_DIALOG})
+include_directories(${SELECT_TASK_DIALOG})
+include_directories(${TASKS})
+include_directories(${TASKS_FACTORY})
+
+include_directories(${EQUATION})
+include_directories(${EQUATION_WIDGET})
+include_directories(${TYPE_TASK_EQUATION})
+include_directories(${PLOT_EQUATION})
+
+include_directories(${PLUGIN_INTERFACE})
+
+set(MAIN_SOURCES main.cpp)
+set(MAIN_FILES ${MAIN_SOURCES})
+
+set(MAIN_WINDOW_SOURCES ${MAIN_WINDOW}/main_window.cpp)
+set(MAIN_WINDOW_HEADERS ${MAIN_WINDOW}/main_window.hpp)
+set(MAIN_WINDOW_FILES ${MAIN_WINDOW_SOURCES} ${MAIN_WINDOW_HEADERS})
+
+set(DATABASE_HELPER_SOURCES ${DATABASE_HELPER}/database_helper.cpp)
+set(DATABASE_HELPER_HEADERS ${DATABASE_HELPER}/database_helper.hpp)
+set(DATABASE_HELPER_FILES ${DATABASE_HELPER_SOURCES} ${DATABASE_HELPER_HEADERS})
+
+set(QSQL_CONNECTION_SOURCES ${QSQL_CONNECTION_DIALOG}/qsql_connection_dialog.cpp)
+set(QSQL_CONNECTION_HEADERS ${QSQL_CONNECTION_DIALOG}/qsql_connection_dialog.hpp)
+set(QSQL_CONNECTION_FORMS ${QSQL_CONNECTION_DIALOG}/qsql_connection_dialog.ui)
+set(QSQL_CONNECTION_FILES ${QSQL_CONNECTION_SOURCES} ${QSQL_CONNECTION_HEADERS} ${QSQL_CONNECTION_FORMS})
+
+set(SELECT_TASK_SOURCES ${SELECT_TASK_DIALOG}/select_task_dialog.cpp)
+set(SELECT_TASK_HEADERS ${SELECT_TASK_DIALOG}/select_task_dialog.hpp)
+set(SELECT_TASK_FORMS ${SELECT_TASK_DIALOG}/select_task_dialog.ui)
+set(SELECT_TASK_FILES ${SELECT_TASK_SOURCES} ${SELECT_TASK_HEADERS} ${SELECT_TASK_FORMS})
+
+set(TASK_HEADERS ${TASKS}/task.hpp)
+set(TASK_FILES ${TASK_HEADERS})
+
+set(TASK_FACTORY_SOURCES ${TASKS_FACTORY}/task_factory.cpp)
+set(TASK_FACTORY_HEADERS ${TASKS_FACTORY}/task_factory.hpp)
+set(TASK_FACTORY_FILES ${TASK_FACTORY_SOURCES} ${TASK_FACTORY_HEADERS})
+
+set(TYPE_TASK_HEADERS ${TASKS}/type_task.hpp)
+set(TYPE_TASK_FILES ${TYPE_TASK_HEADERS})
+
+set(EQUATION_SOURCES ${EQUATION}/equation.cpp)
+set(EQUATION_HEADERS ${EQUATION}/equation.hpp)
+set(EQUATION_FILES ${EQUATION_SOURCES} ${EQUATION_HEADERS})
+
+set(EQUATION_WIDGET_SOURCES ${EQUATION_WIDGET}/equation_widget.cpp)
+set(EQUATION_WIDGET_HEADERS ${EQUATION_WIDGET}/equation_widget.hpp)
+set(EQUATION_WIDGET_FORMS ${EQUATION_WIDGET}/equation_widget.ui)
+set(EQUATION_WIDGET_FILES ${EQUATION_WIDGET_SOURCES} ${EQUATION_WIDGET_HEADERS} ${EQUATION_WIDGET_FORMS})
+
+set(TYPE_TASK_EQUATION_SOURCES ${TYPE_TASK_EQUATION}/type_task_equation.cpp)
+set(TYPE_TASK_EQUATION_HEADERS ${TYPE_TASK_EQUATION}/type_task_equation.hpp)
+set(TYPE_TASK_EQUATION_FILES ${TYPE_TASK_EQUATION_SOURCES} ${TYPE_TASK_EQUATION_HEADERS})
+
+set(PLOT_EQUATION_SOURCES ${PLOT_EQUATION}/plot_dialog.cpp)
+set(PLOT_EQUATION_HEADERS ${PLOT_EQUATION}/plot_dialog.hpp)
+set(PLOT_EQUATION_FORMS ${PLOT_EQUATION}/plot_dialog.ui)
+set(PLOT_EQUATION_FILES ${PLOT_EQUATION_SOURCES} ${PLOT_EQUATION_HEADERS} ${PLOT_EQUATION_FORMS})
+
+set(ALL_FILES
+    ${MAIN_FILES}
+    ${MAIN_WINDOW_FILES}
+    ${DATABASE_HELPER_FILES}
+    ${QSQL_CONNECTION_FILES}
+    ${SELECT_TASK_FILES}
+    ${TASK_FILES}
+    ${TASK_FACTORY_FILES}
+    ${TYPE_TASK_FILES}
+    ${EQUATION_FILES}
+    ${EQUATION_WIDGET_FILES}
+    ${TYPE_TASK_EQUATION_FILES}
+    ${PLOT_EQUATION_FILES}
+    )
+
+if (MSVC)
+    source_group("Source Files\\" FILES ${MAIN_FILES})
+    source_group("Source Files\\MAIN" FILES ${MAIN_WINDOW_FILES})
+    source_group("Source Files\\DATABASE HELPER" FILES ${DATABASE_HELPER_FILES})
+
+    source_group("Source Files\\DIALOGS\\QSQL CONNECTION" FILES ${QSQL_CONNECTION_FILES})
+    source_group("Source Files\\DIALOGS\\SELECT TASK" FILES ${SELECT_TASK_FILES})
+
+    source_group("Source Files\\TASKS\\" FILES ${TASK_FILES} ${TYPE_TASK_FILES})
+    source_group("Source Files\\TASKS\\FACTORY" FILES ${TASK_FACTORY_FILES})
+
+    source_group("Source Files\\TASKS\\EQUATION" FILES ${EQUATION_FILES})
+    source_group("Source Files\\TASKS\\EQUATION\\EQUATION WIDGET" FILES ${EQUATION_WIDGET_FILES})
+    source_group("Source Files\\TASKS\\EQUATION\\TYPE TASK EQUATION" FILES ${TYPE_TASK_EQUATION_FILES})
+    source_group("Source Files\\TASKS\\EQUATION\\PLOT" FILES ${PLOT_EQUATION_FILES})
+endif (MSVC)
+
+add_executable(${APP_NAME} ${ALL_FILES})
+target_link_libraries(${APP_NAME} ${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY} ${QWT_LIBRARY})
+#target_link_libraries(${APP_NAME} Qt5::Widgets Qt5::Sql Qt5::Script)
+
+if (MSVC)
+    set_target_properties(${APP_NAME} PROPERTIES LINK_FLAGS " /DYNAMICBASE:NO /FIXED")
+endif (MSVC)
