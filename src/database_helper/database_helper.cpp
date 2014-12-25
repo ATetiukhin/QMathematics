@@ -69,7 +69,7 @@ void DatabaseHelper::connection(const QString &driver, const QString &dbName, co
 void DatabaseHelper::disconnection()
 {
     db_.close();
-    db_.removeDatabase(db_.connectionName());
+    //db_.removeDatabase(db_.connectionName());
 }
 
 bool DatabaseHelper::isOpen()
