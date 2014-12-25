@@ -91,11 +91,13 @@ QStringList DatabaseHelper::getTasks()
     return result;
 }
 
-QStringList DatabaseHelper::getMethods()
+QStringList DatabaseHelper::getMethods(int type_task)
 {
     QStringList result;
     QSqlQuery q("", db_);
-    q.exec("SELECT method_name FROM methods WHERE type_task = 0");
+    q.prepare("SELECT method_name FROM methods WHERE type_task = :id");
+    q.bindValue(":id", type_task);
+    q.exec();
     int field = q.record().indexOf("method_name");
 
     while (q.next()) {
@@ -110,7 +112,7 @@ int DatabaseHelper::getExpressionId(QString const & equation)
     QSqlQuery q("", db_);
     q.prepare("SELECT id_expression FROM expressions WHERE expression = :s AND type_task = :id");
     q.bindValue(":s", equation);
-    q.bindValue(":type_task", 0); //equation in r1
+    q.bindValue(":id", 0);
     q.exec();
 
     if (!q.first()) {
@@ -167,11 +169,12 @@ bool DatabaseHelper::getAnswer(QVector <double> const & parametersValues, double
     return false;
 }
 
-QString DatabaseHelper::getPathToPlugin(int idMethod)
+QString DatabaseHelper::getPathToPlugin(int idTypeTask, int idMethod)
 {
     QSqlQuery q("", db_);
-    q.prepare("SELECT path_to_method FROM methods WHERE type_task = 0 AND id_method = :id_1");
-    q.bindValue(":id_1", idMethod);
+    q.prepare("SELECT path_to_method FROM methods WHERE type_task = :id_1 AND id_method = :id_2");
+    q.bindValue(":id_1", idTypeTask);
+    q.bindValue(":id_2", idMethod);
     q.exec();
     int field = q.record().indexOf("path_to_method");
 

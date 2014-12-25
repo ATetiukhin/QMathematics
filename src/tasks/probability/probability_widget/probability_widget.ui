@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProbabilityWidgetUI</class>
+ <widget class="QWidget" name="ProbabilityWidgetUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>450</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>450</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Probability</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QComboBox" name="nameSample">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>170</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="resultLineEdit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>30</y>
+        <width>170</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="yLeftBox">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>130</y>
+        <width>100</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="suffix">
+       <string notr="true"/>
+      </property>
+      <property name="decimals">
+       <number>0</number>
+      </property>
+      <property name="minimum">
+       <double>0.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>1000000000.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>0.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="yRightBox">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>90</y>
+        <width>100</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="decimals">
+       <number>0</number>
+      </property>
+      <property name="minimum">
+       <double>0.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>1000000000.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>0.000000000000000</double>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="answerButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>180</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Answer</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+  <action name="insertRowAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Insert Row</string>
+   </property>
+   <property name="statusTip">
+    <string>Inserts a new Row</string>
+   </property>
+  </action>
+  <action name="deleteRowAction">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Delete Row</string>
+   </property>
+   <property name="statusTip">
+    <string>Deletes the current Row</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

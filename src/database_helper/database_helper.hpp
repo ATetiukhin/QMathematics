@@ -38,13 +38,13 @@ public:
 
     static QStringList getTasks();
 
-    static QStringList getMethods();
+    static QStringList getMethods(int type_task);
 
     static int getExpressionId(QString const & equation);
 
     static bool getAnswer(QVector <double> const & parametersValues, double & result, int idMethod, int idExpression);
 
-    static QString getPathToPlugin(int idMethod);
+    static QString getPathToPlugin(int idTypeTask, int idMethod);
 
     static void DatabaseHelper::setAnswer(QVector<double> const & parametersValues, QString const & expression, int idMethod, double result);
 

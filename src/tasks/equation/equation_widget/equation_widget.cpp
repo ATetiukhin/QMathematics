@@ -21,7 +21,7 @@ EquationWidget::~EquationWidget()
 {
 }
 
-void EquationWidget::connectEquationWidget(TypeTask * task)
+void EquationWidget::connectWidget(TypeTask * task)
 {
     connect(solve, SIGNAL(clicked()), task, SLOT(solveButtonClicked()));
     connect(plot, SIGNAL(clicked()), task, SLOT(plotButtonClicked()));

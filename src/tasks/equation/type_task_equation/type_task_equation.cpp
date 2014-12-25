@@ -23,7 +23,7 @@ TypeTaskEquation::TypeTaskEquation(EquationWidget * ui)
     , idMethod_(-1)
     , parametersValues_(3)
 {
-    QStringList namesMethods(dataBase_.getMethods());
+    QStringList namesMethods(dataBase_.getMethods(0));
     if (!namesMethods.isEmpty()) {
         ui_.updateComboBox(namesMethods);
     }
@@ -59,7 +59,7 @@ void TypeTaskEquation::solveButtonClicked()
             PluginInterface * plugin = nullptr;
             ans_.clear();
 
-            QPluginLoader loader(dataBase_.getPathToPlugin(idMethod_));
+            QPluginLoader loader(dataBase_.getPathToPlugin(0, idMethod_));
             QObject * pluginObject = loader.instance();
 
             if (pluginObject) {

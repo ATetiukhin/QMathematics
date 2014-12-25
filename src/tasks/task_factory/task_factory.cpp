@@ -7,7 +7,9 @@
  * Detailed description of file.
  */
 #include "task_factory.hpp"
+
 #include "equation.hpp"
+#include "probability.hpp"
 
 TaskFactory * TaskFactory::pInstance_ = nullptr;
 TaskFactoryDestroyer TaskFactory::destroyer_;
@@ -46,6 +48,9 @@ Task * TaskFactory::createTask(int id)
     switch (id) {
     case 0:
         newTask = new EquationTask;
+        break;
+    case 1:
+        newTask = new ProbabilityTask;
         break;
     default:
         throw std::runtime_error("type task -1");

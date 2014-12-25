@@ -14,6 +14,10 @@ set(EQUATION_WIDGET tasks/equation/equation_widget)
 set(TYPE_TASK_EQUATION tasks/equation/type_task_equation)
 set(PLOT_EQUATION tasks/equation/plot_dialog)
 
+set(PROBABILITY tasks/probability)
+set(PROBABILITY_WIDGET tasks/probability/probability_widget)
+set(TYPE_TASK_PROBABILITY tasks/probability/type_task_probability)
+
 set(PLUGIN_INTERFACE ../plugins)
 
 include_directories(${MAIN_WINDOW})
@@ -27,6 +31,10 @@ include_directories(${EQUATION})
 include_directories(${EQUATION_WIDGET})
 include_directories(${TYPE_TASK_EQUATION})
 include_directories(${PLOT_EQUATION})
+
+include_directories(${PROBABILITY})
+include_directories(${PROBABILITY_WIDGET})
+include_directories(${TYPE_TASK_PROBABILITY})
 
 include_directories(${PLUGIN_INTERFACE})
 
@@ -79,6 +87,19 @@ set(PLOT_EQUATION_HEADERS ${PLOT_EQUATION}/plot_dialog.hpp)
 set(PLOT_EQUATION_FORMS ${PLOT_EQUATION}/plot_dialog.ui)
 set(PLOT_EQUATION_FILES ${PLOT_EQUATION_SOURCES} ${PLOT_EQUATION_HEADERS} ${PLOT_EQUATION_FORMS})
 
+set(PROBABILITY_SOURCES ${PROBABILITY}/probability.cpp)
+set(PROBABILITY_HEADERS ${PROBABILITY}/probability.hpp)
+set(PROBABILITY_FILES ${PROBABILITY_SOURCES} ${PROBABILITY_HEADERS})
+
+set(PROBABILITY_WIDGET_SOURCES ${PROBABILITY_WIDGET}/probability_widget.cpp)
+set(PROBABILITY_WIDGET_HEADERS ${PROBABILITY_WIDGET}/probability_widget.hpp)
+set(PROBABILITY_WIDGET_FORMS ${PROBABILITY_WIDGET}/probability_widget.ui)
+set(PROBABILITY_WIDGET_FILES ${PROBABILITY_WIDGET_SOURCES} ${PROBABILITY_WIDGET_HEADERS} ${PROBABILITY_WIDGET_FORMS})
+
+set(TYPE_TASK_PROBABILITY_SOURCES ${TYPE_TASK_PROBABILITY}/type_task_probability.cpp)
+set(TYPE_TASK_PROBABILITY_HEADERS ${TYPE_TASK_PROBABILITY}/type_task_probability.hpp)
+set(TYPE_TASK_PROBABILITY_FILES ${TYPE_TASK_PROBABILITY_SOURCES} ${TYPE_TASK_PROBABILITY_HEADERS})
+
 set(ALL_FILES
     ${MAIN_FILES}
     ${MAIN_WINDOW_FILES}
@@ -92,6 +113,9 @@ set(ALL_FILES
     ${EQUATION_WIDGET_FILES}
     ${TYPE_TASK_EQUATION_FILES}
     ${PLOT_EQUATION_FILES}
+    ${PROBABILITY_FILES}
+    ${PROBABILITY_WIDGET_FILES}
+    ${TYPE_TASK_PROBABILITY_FILES}
     )
 
 if (MSVC)
@@ -109,6 +133,10 @@ if (MSVC)
     source_group("Source Files\\TASKS\\EQUATION\\EQUATION WIDGET" FILES ${EQUATION_WIDGET_FILES})
     source_group("Source Files\\TASKS\\EQUATION\\TYPE TASK EQUATION" FILES ${TYPE_TASK_EQUATION_FILES})
     source_group("Source Files\\TASKS\\EQUATION\\PLOT" FILES ${PLOT_EQUATION_FILES})
+
+    source_group("Source Files\\TASKS\\PROBABILITY" FILES ${PROBABILITY_FILES})
+    source_group("Source Files\\TASKS\\PROBABILITY\\PROBABILITY WIDGET" FILES ${PROBABILITY_WIDGET_FILES})
+    source_group("Source Files\\TASKS\\PROBABILITY\\TYPE TASK PROBABILITY" FILES ${TYPE_TASK_PROBABILITY_FILES})
 endif (MSVC)
 
 add_executable(${APP_NAME} ${ALL_FILES})

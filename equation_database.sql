@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `methods` (
 );
 
 -- private table
--- Параметры метода
 CREATE TABLE IF NOT EXISTS `parameters_method` (
   `id_method_parameters` INT(10)      NOT NULL,
   `method`               INT(10)      NOT NULL,
@@ -59,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `expressions` (
   FOREIGN KEY (`type_task`) REFERENCES `type_task`(`id_type_task`)
 );
 
--- Значенние параметров
+-- The value of the parameters
 CREATE TABLE IF NOT EXISTS `parameters_values` (
   `id_session` INT(10) NOT NULL AUTO_INCREMENT,
   `method`     INT(10) NOT NULL,
@@ -73,7 +72,6 @@ CREATE TABLE IF NOT EXISTS `parameters_values` (
   FOREIGN KEY (`parameter`)  REFERENCES `parameters_method`  (`id_method_parameters`)
 );
 
-
 CREATE TABLE IF NOT EXISTS `result` (
   `number_component`  INT(10) NOT NULL,
   `session`           INT(10) NOT NULL,
@@ -84,20 +82,37 @@ CREATE TABLE IF NOT EXISTS `result` (
   FOREIGN KEY (`method`)  REFERENCES `methods`           (`id_method`)
 );
 
+CREATE TABLE IF NOT EXISTS `sample` (
+  `id_sample` INT(10)      NOT NULL,
+  `name_sample` VARCHAR(255) NOT NULL,
+
+  PRIMARY KEY (`id_sample`)
+);
+
+CREATE TABLE IF NOT EXISTS `sampling_data` (
+  `sample`        INT(10)      NOT NULL,
+  `serial_number` VARCHAR(255) NOT NULL,
+  `value`         DOUBLE       NOT NULL,
+
+  PRIMARY KEY (`sample`, `serial_number`),
+  FOREIGN KEY (`sample`) REFERENCES `sample` (`id_sample`) 
+);
+
 -- ---------------------------------------------------
 
 INSERT INTO `type_task`
   (`id_type_task`, `name_task`)
 VALUES
   (0, 'Equation'),
-  (1, 'Equations (n)');
+  (1, 'Probability');
 
 -- ---------------------------------------------------
 
 INSERT INTO `methods`
   (`id_method`, `type_task`, `method_name`, `path_to_method`)
 VALUES
-  (0, 0, "Bisection", "C:\\plugins\\bisection.dll");
+  (0, 0, "Bisection", "C:\\plugins\\bisection.dll"),
+  (1, 1, "Cdbinrnk", "C:\\plugins\\cdbinrnk.dll");
 
 -- ---------------------------------------------------
 
@@ -109,6 +124,24 @@ VALUES
   (2, 0, "eps",     "comment 3");
 
 -- ---------------------------------------------------
+
+INSERT INTO `sample`
+  (`id_sample`, `name_sample`)
+VALUES
+  (0, 'Test 1');
+
+-- ---------------------------------------------------  
+
+INSERT INTO `sampling_data`
+  (`sample`, `serial_number`, `value`)
+VALUES
+  (0, 0, 0),
+  (0, 1, 10),
+  (0, 2, 20),
+  (0, 3, 30),
+  (0, 4, 40);
+
+-- ---------------------------------------------------  
 
 -- SELECT * FROM `type_task`;
 -- SELECT * FROM `methods`;

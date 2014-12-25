@@ -13,14 +13,12 @@ EquationTask::EquationTask(QWidget *parent)
     EquationWidget * ui = new EquationWidget(parent);
 
     task_ = new TypeTaskEquation(ui);
-    ui->connectEquationWidget(task_);
+    ui->connectWidget(task_);
     ui_ = ui;
 }
 
 EquationTask::~EquationTask()
 {
-    delete task_;
-    delete ui_;
 }
 
 /* End of 'equation.cpp' file */

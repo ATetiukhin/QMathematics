@@ -25,7 +25,7 @@ public:
 
     ~EquationWidget();
 
-    void connectEquationWidget(TypeTask * task);
+    void connectWidget(TypeTask * task);
 
     void updateComboBox(QStringList const & namesMethods);
 
