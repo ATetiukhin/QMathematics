@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 # Project settings
-set(PROJECT_NAME Equation)
+set(PROJECT_NAME QMathematics)
 project(${PROJECT_NAME})
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 2)
+set(VERSION_PATCH 3)
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 message(STATUS "VERSION: " ${VERSION})
 

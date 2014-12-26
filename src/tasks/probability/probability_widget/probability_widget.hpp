@@ -25,13 +25,13 @@ public:
 
     ~ProbabilityWidget();
 
-    void connectWidget(TypeTask * task);
+    void connectWidget(TypeTask *task);
 
-    void updateComboBox(QStringList const & namesMethods);
+    void updateComboBox(QStringList const &namesMethods);
 
-    void getEquationParameters(int & idMethod) const;
+    void getEquationParameters(int &idMethod, int &left, int &right, double &r) const;
 
-    void updateResult(QString const & namesMethods);
+    void updateResult(QString const &namesMethods);
 };
 
 #endif

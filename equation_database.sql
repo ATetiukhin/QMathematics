@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `methods` (
   `method_name`    varchar(255) NOT NULL,
   `path_to_method` varchar(255) NOT NULL,
 
-  PRIMARY KEY (`id_method`),
+  PRIMARY KEY (`id_method`, `type_task`),
   FOREIGN KEY (`type_task`) REFERENCES `type_task`(`id_type_task`)
 );
 
@@ -112,7 +112,7 @@ INSERT INTO `methods`
   (`id_method`, `type_task`, `method_name`, `path_to_method`)
 VALUES
   (0, 0, "Bisection", "C:\\plugins\\bisection.dll"),
-  (1, 1, "Cdbinrnk", "C:\\plugins\\cdbinrnk.dll");
+  (0, 1, "Cdbinrnk", "C:\\plugins\\cdbinrnk.dll");
 
 -- ---------------------------------------------------
 
@@ -128,19 +128,43 @@ VALUES
 INSERT INTO `sample`
   (`id_sample`, `name_sample`)
 VALUES
-  (0, 'Test 1');
+  (0, 'Random distribution'),
+  (1, 'Not a random distribution');
 
 -- ---------------------------------------------------  
 
 INSERT INTO `sampling_data`
   (`sample`, `serial_number`, `value`)
 VALUES
-  (0, 0, 0),
-  (0, 1, 10),
-  (0, 2, 20),
-  (0, 3, 30),
-  (0, 4, 40);
-
+  (0, 0,  0.0000886),
+  (0, 1,  0.04713941),
+  (0, 2,  0.0001348028),
+  (0, 3,  -0.008553069),
+  (0, 4,  0.00312558),
+  (0, 5,  -0.0008426812),
+  (0, 6,  0.00009780499),
+  (0, 7,  -0.02237368),
+  (0, 8,  0.002607083),
+  (0, 9,  0.001128186),
+  (0, 10, -0.001153761),
+  (0, 11, 0.005169654),
+  (0, 12, 0.00253001),
+  (0, 13, -0.001450117),
+  (0, 14, -0.001513904),
+  (0, 15, -0.008986007),
+  
+  (1, 0,   1.0),
+  (1, 1,   2.0),
+  (1, 2,   3.0),
+  (1, 3,   4.0),
+  (1, 4,   1.0),
+  (1, 5,   2.0),
+  (1, 6,   3.0),
+  (1, 7,   4.0),
+  (1, 8,   1.0),
+  (1, 9,   2.0),
+  (1, 10,  3.0),
+  (1, 11,  4.0);
 -- ---------------------------------------------------  
 
 -- SELECT * FROM `type_task`;

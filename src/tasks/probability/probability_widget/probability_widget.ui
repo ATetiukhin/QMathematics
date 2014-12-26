@@ -50,14 +50,14 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>30</y>
-        <width>170</width>
+        <x>0</x>
+        <y>250</y>
+        <width>428</width>
         <height>25</height>
        </rect>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="yLeftBox">
+     <widget class="QDoubleSpinBox" name="RightBox">
       <property name="geometry">
        <rect>
         <x>230</x>
@@ -82,7 +82,7 @@
        <double>0.000000000000000</double>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="yRightBox">
+     <widget class="QDoubleSpinBox" name="LeftBox">
       <property name="geometry">
        <rect>
         <x>230</x>
@@ -115,6 +115,16 @@
       </property>
       <property name="text">
        <string>Answer</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="inputLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>30</y>
+        <width>130</width>
+        <height>26</height>
+       </rect>
       </property>
      </widget>
     </widget>

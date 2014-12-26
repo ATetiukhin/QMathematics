@@ -24,9 +24,23 @@ void ProbabilityWidget::connectWidget(TypeTask * task)
     connect(answerButton, SIGNAL(clicked()), task, SLOT(answerButtonClicked()));
 }
 
-void ProbabilityWidget::getEquationParameters(int & idMethod) const
+void ProbabilityWidget::getEquationParameters(int &idSample, int &left, int &right, double &r) const
 {
-    idMethod = nameSample->currentIndex();
+    idSample = nameSample->currentIndex();
+
+    QString rText = inputLineEdit->text();
+    if (rText.isEmpty()) {
+        throw std::runtime_error("Error: r is empty");
+    }
+    r = rText.toDouble();
+
+    QString yLeftText = LeftBox->text();
+    QString yRightText = RightBox->text();
+    left = yLeftText.toInt();
+    right = yRightText.toInt();
+    if (left > right) {
+        throw std::runtime_error("Error: left < right");
+    }
 }
 
 void ProbabilityWidget::updateComboBox(QStringList const & namesMethods)

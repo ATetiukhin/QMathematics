@@ -46,7 +46,11 @@ public:
 
     static QString getPathToPlugin(int idTypeTask, int idMethod);
 
-    static void DatabaseHelper::setAnswer(QVector<double> const & parametersValues, QString const & expression, int idMethod, double result);
+    static void setAnswer(QVector<double> const & parametersValues, QString const & expression, int idMethod, double result);
+
+    static QStringList getNameSample();
+
+    static void sample(QVector<double> & sample, int idMethod, int left, int right);
 
 private:
     static QSqlDatabase db_;

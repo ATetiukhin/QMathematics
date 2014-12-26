@@ -68,7 +68,7 @@ void DatabaseHelper::connection(const QString &driver, const QString &dbName, co
 
 void DatabaseHelper::disconnection()
 {
-    db_.close();
+    //db_.close();
     //db_.removeDatabase(db_.connectionName());
 }
 
@@ -93,13 +93,13 @@ QStringList DatabaseHelper::getTasks()
 
 QStringList DatabaseHelper::getMethods(int type_task)
 {
-    QStringList result;
     QSqlQuery q("", db_);
     q.prepare("SELECT method_name FROM methods WHERE type_task = :id");
     q.bindValue(":id", type_task);
     q.exec();
     int field = q.record().indexOf("method_name");
 
+    QStringList result;
     while (q.next()) {
         result.append(q.value(field).toString());
     }
@@ -231,6 +231,43 @@ void DatabaseHelper::setAnswer(QVector<double> const & parametersValues, QString
     p.bindValue(":id_2", idMethod);
     p.bindValue(":id_3", result);
     p.exec();
+}
+
+QStringList DatabaseHelper::getNameSample()
+{
+    QSqlQuery q("", db_);
+    q.prepare("SELECT name_sample FROM sample");
+    q.exec();
+    int field = q.record().indexOf("name_sample");
+
+    QStringList result;
+    while (q.next()) {
+        result.append(q.value(field).toString());
+    }
+
+    return result;
+}
+
+
+void DatabaseHelper::sample(QVector<double> & sample, int idSample, int left, int right)
+{
+    QSqlQuery q("", db_);
+    q.prepare("SELECT value FROM sampling_data WHERE sample = :id_1 AND serial_number >= :id_2 AND serial_number <= :id_3");
+    q.bindValue(":id_1", idSample);
+    q.bindValue(":id_2", left);
+    q.bindValue(":id_3", right);
+    q.exec();
+
+    int field = q.record().indexOf("value");
+
+    int n = q.size();
+    int i = 0;
+    sample.resize(n);
+
+    while (q.next()) {
+        sample[i] = q.value(field).toDouble();
+        ++i;
+    }
 }
 
 /* End of 'database_helper.cpp' file */
