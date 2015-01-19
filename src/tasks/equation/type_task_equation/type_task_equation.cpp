@@ -1,11 +1,10 @@
 /**
  * @file   type_task_equation.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
+ * @Author ATetiukhin
+ * @date   January, 2015
+ * @brief  Implementation tasks equation.
  */
+
 #include "type_task_equation.hpp" // you cannot change the position
 #include "database_helper.hpp"
 #include "equation_widget.hpp"

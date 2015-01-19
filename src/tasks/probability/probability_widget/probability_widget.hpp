@@ -1,11 +1,10 @@
 /**
- * @file   probability_widget.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   probability_widget.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Widget task probability.
+*/
+
 #ifndef EQUATION_PROBABILITY_HPP_INCLUDE
 #define EQUATION_PROBABILITY_HPP_INCLUDE
 

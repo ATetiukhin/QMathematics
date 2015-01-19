@@ -1,11 +1,9 @@
 /**
- * @file   main_window.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   main_window.cpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  @ref MainWindow is control class.
+*/
 
 #include <stdexcept>
 
@@ -121,7 +119,6 @@ void MainWindow::qsql_connection_dialog()
 
 void MainWindow::disconnection()
 {
-    data_base_helper_.disconnection();
     enabled_menu();
 }
 

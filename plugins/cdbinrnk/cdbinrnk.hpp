@@ -1,11 +1,10 @@
 /**
- * @file   cdbinrnk.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   cdbinrnk.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Method cdbinrnk.
+*/
+
 #ifndef DICHOTOMY_HPP_INCLUDE
 #define DICHOTOMY_HPP_INCLUDE
 

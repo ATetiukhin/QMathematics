@@ -9,8 +9,8 @@
 #ifndef PLUGIN_INTERFACE_HPP_INCLUDE
 #define PLUGIN_INTERFACE_HPP_INCLUDE
 
-#include <QtPlugin>
 #include <functional>
+#include <QtPlugin>
 
 class PluginInterface
 {

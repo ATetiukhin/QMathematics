@@ -1,11 +1,12 @@
 /**
- * @file   database_helper.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   database_helper.cpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  @ref DatabaseHelper is class for working with database.
+*
+* @ref DatabaseHelper is implemented with the use of the singleton pattern.
+* @ref DatabaseHelperDestroyer is helper class for destruction @ref DatabaseHelper.
+*/
 
 #include <stdexcept>
 #include <QtSql>
@@ -39,7 +40,8 @@ DatabaseHelper &DatabaseHelper::getInstance()
     if (!pInstance_) {
         pInstance_ = new DatabaseHelper();
         destroyer_.initialize(pInstance_);
-    }
+		//db_ = QSqlDatabase::addDatabase("QMYSQL");
+	}
 
     return *pInstance_;
 }
@@ -64,12 +66,6 @@ void DatabaseHelper::connection(const QString &driver, const QString &dbName, co
     if (error.type() != QSqlError::NoError) {
         throw std::runtime_error(error.text().toUtf8().constData());
     }
-}
-
-void DatabaseHelper::disconnection()
-{
-    //db_.close();
-    //db_.removeDatabase(db_.connectionName());
 }
 
 bool DatabaseHelper::isOpen()

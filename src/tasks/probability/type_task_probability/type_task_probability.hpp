@@ -1,11 +1,10 @@
 /**
- * @file   type_task_probability.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   type_task_probability.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Implementation tasks probability.
+*/
+
 #ifndef TYPE_TASK_PROBABILITY_HPP_INCLUDE
 #define TYPE_TASK_PROBABILITY_HPP_INCLUDE
 

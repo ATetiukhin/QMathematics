@@ -1,4 +1,6 @@
-set(APP_NAME App)
+set(APP_NAME QMathematics)
+
+####################################################################################################
 
 set(MAIN_WINDOW main_window/)
 set(DATABASE_HELPER database_helper)
@@ -20,6 +22,8 @@ set(TYPE_TASK_PROBABILITY tasks/probability/type_task_probability)
 
 set(PLUGIN_INTERFACE ../plugins)
 
+####################################################################################################
+
 include_directories(${MAIN_WINDOW})
 include_directories(${DATABASE_HELPER})
 include_directories(${QSQL_CONNECTION_DIALOG})
@@ -37,6 +41,8 @@ include_directories(${PROBABILITY_WIDGET})
 include_directories(${TYPE_TASK_PROBABILITY})
 
 include_directories(${PLUGIN_INTERFACE})
+
+####################################################################################################
 
 set(MAIN_SOURCES main.cpp)
 set(MAIN_FILES ${MAIN_SOURCES})
@@ -118,6 +124,8 @@ set(ALL_FILES
     ${TYPE_TASK_PROBABILITY_FILES}
     )
 
+####################################################################################################
+
 if (MSVC)
     source_group("Source Files\\" FILES ${MAIN_FILES})
     source_group("Source Files\\MAIN" FILES ${MAIN_WINDOW_FILES})
@@ -137,12 +145,36 @@ if (MSVC)
     source_group("Source Files\\TASKS\\PROBABILITY" FILES ${PROBABILITY_FILES})
     source_group("Source Files\\TASKS\\PROBABILITY\\PROBABILITY WIDGET" FILES ${PROBABILITY_WIDGET_FILES})
     source_group("Source Files\\TASKS\\PROBABILITY\\TYPE TASK PROBABILITY" FILES ${TYPE_TASK_PROBABILITY_FILES})
+
+	source_group("AUTOMOC" FILES QMathematics_automic.cpp)
 endif (MSVC)
+
+####################################################################################################
 
 add_executable(${APP_NAME} ${ALL_FILES})
-target_link_libraries(${APP_NAME} ${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY} ${QWT_LIBRARY})
-#target_link_libraries(${APP_NAME} Qt5::Widgets Qt5::Sql Qt5::Script)
+target_link_libraries(${APP_NAME} Qt4::QtCore Qt4::QtGui Qt4::QtScript Qt4::QtSql Qt4::QtSvg)
+target_link_libraries(${APP_NAME} optimized ${QWT_LIBRARY_RELEASE} debug ${QWT_LIBRARY_DEBUG})
 
+# Setting directory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIRECTORY} CACHE STRING "" FORCE)
+
+# Project settings
 if (MSVC)
+    set(CMAKE_CXX_FLAGS "/EHsc /W3 /nologo " CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /MDd /Ob0 /Od /Zi /RTC1 " CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_MINSIZEREL     "/MT /O1 /Ob1 /D NDEBUG " CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_RELEASE        "/MT /O2 /Ob2 /D NDEBUG " CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/MT /Zi /O2 /Ob1 /D NDEBUG " CACHE STRING "" FORCE)
+
     set_target_properties(${APP_NAME} PROPERTIES LINK_FLAGS " /DYNAMICBASE:NO /FIXED")
-endif (MSVC)
+
+elseif (CMAKE_COMPILER_IS_GNUCXX)
+    set(CMAKE_CXX_FLAGS " -std=c++11 -Wall " CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_DEBUG " -g -Os " CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} " CACHE STRING "" FORCE)
+
+    set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++ " CACHE STRING "" FORCE)
+
+endif ()
+
+####################################################################################################

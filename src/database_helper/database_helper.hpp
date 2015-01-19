@@ -1,16 +1,20 @@
 /**
- * @file   database_helper.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   database_helper.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  @ref DatabaseHelper is class for working with database.
+*
+* @ref DatabaseHelper is implemented with the use of the singleton pattern.
+* @ref DatabaseHelperDestroyer is helper class for destruction @ref DatabaseHelper.
+*/
+
 #ifndef DATABASE_HELPER_HPP_INCLUDE
 #define DATABASE_HELPER_HPP_INCLUDE
 
+QT_BEGIN_NAMESPACE
 class QSqlDatabase;
 class DatabaseHelper;
+QT_END_NAMESPACE
 
 class DatabaseHelperDestroyer
 {
@@ -23,34 +27,33 @@ private:
     DatabaseHelper *pInstance_;
 };
 
+
 class DatabaseHelper
 {
 public:
     static DatabaseHelper &getInstance();
 
-    static void connection(const QString &driver, const QString &dbName,
-                           const QString &host, const QString &user,
-                           const QString &passwd, int port = -1);
+    void connection(const QString &driver, const QString &dbName,
+                    const QString &host, const QString &user,
+                    const QString &passwd, int port = -1);
 
-    static void disconnection();
+    bool isOpen();
 
-    static bool isOpen();
+    QStringList getTasks();
 
-    static QStringList getTasks();
+    QStringList getMethods(int type_task);
 
-    static QStringList getMethods(int type_task);
+    int getExpressionId(QString const & equation);
 
-    static int getExpressionId(QString const & equation);
+    bool getAnswer(QVector <double> const & parametersValues, double & result, int idMethod, int idExpression);
 
-    static bool getAnswer(QVector <double> const & parametersValues, double & result, int idMethod, int idExpression);
+    QString getPathToPlugin(int idTypeTask, int idMethod);
 
-    static QString getPathToPlugin(int idTypeTask, int idMethod);
+    void setAnswer(QVector<double> const & parametersValues, QString const & expression, int idMethod, double result);
 
-    static void setAnswer(QVector<double> const & parametersValues, QString const & expression, int idMethod, double result);
+    QStringList getNameSample();
 
-    static QStringList getNameSample();
-
-    static void sample(QVector<double> & sample, int idMethod, int left, int right);
+    void sample(QVector<double> & sample, int idMethod, int left, int right);
 
 private:
     static QSqlDatabase db_;

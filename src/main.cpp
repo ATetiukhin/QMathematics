@@ -1,14 +1,18 @@
 /**
  * @file   main.cpp
- * @Author https://github.com/ATetiukhin
+ * @Author ATetiukhin (https://github.com/ATetiukhin)
  * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
+ * @brief  Main entry point.
  */
 
 #include <QApplication>
 #include "main_window.hpp"
+
+/* Debug sql driver info */
+#ifdef _DEBUG
+#	include <QDebug>
+#	include <QtSql>
+#endif /* _DEBUG */
 
 /* Debug memory check support */
 /* Debug memory allocation support */
@@ -16,8 +20,8 @@
 #  define _CRTDBG_MAP_ALLOC
 #  include <crtdbg.h>
 #  define SetDbgMemHooks() \
-  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF | \
-  _CRTDBG_ALLOC_MEM_DF | _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG))
+	_CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF | \
+	_CRTDBG_ALLOC_MEM_DF | _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG))
 #endif /* _DEBUG */
 
 #ifdef _DEBUG
@@ -28,18 +32,24 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+	QApplication app(argc, argv);
 
-    //HANDLE hTempModule = ::LoadLibraryEx(".../Equation/build/src/plugins/Debug/newton.dll", 0, 0);
+#ifdef _DEBUG
+	QStringList drivers = QSqlDatabase::drivers();
+	for (int i = 0; i < drivers.count(); i++)
+		qDebug() << drivers.at(i);
+#endif /* _DEBUG */
 
-    MainWindow main_window;
-    main_window.show();
+	//HANDLE hTempModule = ::LoadLibraryEx(".../Equation/build/src/plugins/Debug/newton.dll", 0, 0);
 
-    if (!main_window.connection_from_commandline(app.arguments())) {
-        main_window.exec();
-    }
+	MainWindow main_window;
+	main_window.show();
 
-    return app.exec();
+	if (!main_window.connection_from_commandline(app.arguments())) {
+		main_window.exec();
+	}
+
+	return app.exec();
 }
 
 /* End of 'main.cpp' file */

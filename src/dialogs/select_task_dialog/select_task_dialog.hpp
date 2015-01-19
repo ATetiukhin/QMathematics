@@ -1,11 +1,10 @@
 /**
- * @file   select_task_dialog.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   qsql_connection_dialog.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Dialog box for selecting the type of tasks.
+*/
+
 #ifndef SELECT_TASK_DIALOG_HPP_INCLUDE
 #define SELECT_TASK_DIALOG_HPP_INCLUDE
 

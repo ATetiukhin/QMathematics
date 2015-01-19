@@ -1,14 +1,14 @@
 /**
- * @file   qsql_connection_dialog.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   qsql_connection_dialog.cpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Dialog box to connect to the database.
+*/
 
-#include <QSqlDatabase> // QSqlDatabase
+#include <QSqlDatabase>
 #include <QMessagebox>
+#include <QDebug>
+
 #include "qsql_connection_dialog.hpp"
 
 QSqlConnectionDialog::QSqlConnectionDialog(QWidget *parent)
@@ -18,19 +18,16 @@ QSqlConnectionDialog::QSqlConnectionDialog(QWidget *parent)
 
     connect(okButton, SIGNAL(clicked()), this, SLOT(okButtonClicked()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonClicked()));
-    connect(dbCheckBox, SIGNAL(clicked()), this, SLOT(dbCheckBoxClicked()));
 
-    QStringList drivers = QSqlDatabase::drivers();
+	QStringList drivers = QSqlDatabase::drivers();
     /* remove compat names */
-    drivers.removeAll("QMYSQL3");
+	drivers.removeAll("QMYSQL3");
     drivers.removeAll("QOCI8");
     drivers.removeAll("QODBC3");
     drivers.removeAll("QPSQL7");
     drivers.removeAll("QTDS7");
-
-    if (!drivers.contains("QSQLITE")) {
-        dbCheckBox->setEnabled(false);
-    }
+	qDebug() << QSqlDatabase::drivers();
+	qDebug() << QApplication::libraryPaths();
 
     comboDriver->addItems(drivers);
 }
@@ -69,11 +66,6 @@ int QSqlConnectionDialog::port() const
     return portSpinBox->value();
 }
 
-bool QSqlConnectionDialog::useInMemoryDatabase() const
-{
-    return dbCheckBox->isChecked();
-}
-
 void QSqlConnectionDialog::okButtonClicked()
 {
     if (comboDriver->currentText().isEmpty()) {
@@ -87,11 +79,6 @@ void QSqlConnectionDialog::okButtonClicked()
 void QSqlConnectionDialog::cancelButtonClicked()
 {
     reject();
-}
-
-void QSqlConnectionDialog::dbCheckBoxClicked()
-{
-    connGroupBox->setEnabled(!dbCheckBox->isChecked());
 }
 
 /* End of 'qsql_connaction_dialog.cpp' file */

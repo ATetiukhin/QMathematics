@@ -1,11 +1,10 @@
 /**
- * @file   equation.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   equation.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  General class @ref EquationTask for the task type equation.
+*/
+
 #ifndef EQUATION_HPP_INCLUDE
 #define EQUATION_HPP_INCLUDE
 

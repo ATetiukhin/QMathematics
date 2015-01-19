@@ -1,11 +1,10 @@
 /**
- * @file   plot_dialog.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   plot_dialog.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Drawing graphs using the library Qwt.
+*/
+
 #ifndef PLOT_DIALOG_HPP_INCLUDE
 #define PLOT_DIALOG_HPP_INCLUDE
 

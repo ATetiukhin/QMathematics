@@ -1,11 +1,10 @@
 /**
- * @file   probability.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   probability.cpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  General class @ref ProbabilityTask for the task type probability.
+*/
+
 #include "probability.hpp"
 
 ProbabilityTask::ProbabilityTask(QWidget *parent)

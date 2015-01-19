@@ -1,23 +1,19 @@
 set(APP_NAME cdbinrnk)
 
-set(PLUGIN_DICHOTOMY_FILES cdbinrnk.cpp cdbinrnk.hpp)
+set(PLUGIN_FILES cdbinrnk.cpp cdbinrnk.hpp)
 
 include_directories(../)
 
-#find_package(Qt5Core REQUIRED)
-
-add_definitions(-DQT_PLUGIN)
-add_definitions(-DQT_SHARED)
+add_library(${APP_NAME} SHARED ${PLUGIN_FILES} ../plugin_probability.hpp)
+target_link_libraries(${APP_NAME} Qt4::QtCore)
 
 if (MSVC)
+    set(CMAKE_CXX_FLAGS "/EHsc /W3 /nologo /Zc:wchar_t " CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /MTd /Ob0 /Od /Zi /RTC1 -DQT_PLUGIN -DQT_SHARED" CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_RELEASE "/MT /O2 /Ob2 /D NDEBUG -DQT_PLUGIN -DQT_SHARED -DQT_NO_DEBUG" CACHE STRING "" FORCE)
+
     source_group("Source Files" FILES ../plugin_probability.hpp)
-    source_group("Source Files\\PLUGIN" FILES ${PLUGIN_DICHOTOMY_FILES})
-endif (MSVC)
+    source_group("Source Files\\PLUGIN" FILES ${PLUGIN_FILES})
 
-add_library(${APP_NAME} SHARED ${PLUGIN_DICHOTOMY_FILES} ../plugin_probability.hpp)
-target_link_libraries(${APP_NAME} ${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY})
-#target_link_libraries(${APP_NAME} Qt5::Core)
-
-if (MSVC)
     set_target_properties(${APP_NAME} PROPERTIES LINK_FLAGS " /DYNAMICBASE /FIXED:NO")
-endif (MSVC)
+endif ()

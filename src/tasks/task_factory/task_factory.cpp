@@ -1,11 +1,10 @@
 /**
- * @file   task_factory.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   task_factory.cpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  The Abstract factory pattern.
+*/
+
 #include "task_factory.hpp"
 
 #include "equation.hpp"

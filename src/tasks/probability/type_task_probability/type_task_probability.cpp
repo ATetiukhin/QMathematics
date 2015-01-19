@@ -1,11 +1,10 @@
 /**
- * @file   type_task_probability.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   type_task_probability.cpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Implementation tasks probability.
+*/
+
 #include "type_task_probability.hpp" // you cannot change the position
 #include "database_helper.hpp"
 #include "probability_widget.hpp"
@@ -46,7 +45,7 @@ void TypeTaskProbability::answerButtonClicked()
 
         PluginProbability * plugin = nullptr;
         QPluginLoader loader(dataBase_.getPathToPlugin(1, 0));
-        QObject * pluginObject = loader.instance();
+		QObject * pluginObject = loader.instance();
         if (pluginObject) {
             plugin = qobject_cast<PluginProbability *>(pluginObject);
         } else {

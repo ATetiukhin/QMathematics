@@ -1,11 +1,10 @@
 /**
- * @file   probability.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   probability.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  General class @ref ProbabilityTask for the task type probability.
+*/
+
 #ifndef PROBABILITY_HPP_INCLUDE
 #define PROBABILITY_HPP_INCLUDE
 

@@ -1,11 +1,10 @@
 /**
- * @file   task_factory.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   task_factory.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  The Abstract factory pattern.
+*/
+
 #ifndef TASK_FACTORY_HPP_INCLUDE
 #define TASK_FACTORY_HPP_INCLUDE
 

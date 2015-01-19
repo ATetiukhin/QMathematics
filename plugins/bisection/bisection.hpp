@@ -1,11 +1,10 @@
 /**
- * @file   bisection.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   bisection.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Method bisection.
+*/
+
 #ifndef DICHOTOMY_HPP_INCLUDE
 #define DICHOTOMY_HPP_INCLUDE
 
@@ -27,4 +26,4 @@ public:
                            QVector<double> const & parametersValues, QVector<double> & ans) const;
 };
 
-#endif /* End of 'dichotomy.hpp' file */
+#endif /* End of 'bisection.hpp' file */

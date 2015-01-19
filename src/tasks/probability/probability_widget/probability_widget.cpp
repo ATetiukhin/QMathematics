@@ -1,11 +1,10 @@
 /**
- * @file   probability_widget.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   probability_widget.cpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Widget task probability.
+*/
+
 #include "probability_widget.hpp"
 #include "ui_probability_widget.h"
 

@@ -1,11 +1,10 @@
 /**
- * @file   type_task_equation.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   type_task_equation.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  Implementation tasks equation.
+*/
+
 #ifndef TYPE_TASK_EQUATION_HPP_INCLUDE
 #define TYPE_TASK_EQUATION_HPP_INCLUDE
 

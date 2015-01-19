@@ -1,11 +1,10 @@
 /**
- * @file   task.hpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
- */
+* @file   task.hpp
+* @Author ATetiukhin
+* @date   January, 2015
+* @brief  General class @ref Task for different tasks.
+*/
+
 #ifndef TASK_HPP_INCLUDE
 #define TASK_HPP_INCLUDE
 

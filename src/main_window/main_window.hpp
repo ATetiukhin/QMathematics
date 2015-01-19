@@ -1,11 +1,10 @@
 /**
- * @file   main_window.cpp
- * @Author https://github.com/ATetiukhin
- * @date   December, 2014
- * @brief  Brief description of file.
- *
- * Detailed description of file.
+ * @file   main_window.hpp
+ * @Author ATetiukhin
+ * @date   January, 2015
+ * @brief  @ref MainWindow is control class.
  */
+
 #ifndef MAIN_WINDOW_HPP_INCLUDE
 #define MAIN_WINDOW_HPP_INCLUDE
 
