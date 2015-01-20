@@ -27,19 +27,13 @@ void ProbabilityWidget::getEquationParameters(int &idSample, int &left, int &rig
 {
     idSample = nameSample->currentIndex();
 
-    QString rText = inputLineEdit->text();
-    if (rText.isEmpty()) {
-        throw std::runtime_error("Error: r is empty");
-    }
-    r = rText.toDouble();
-
     QString yLeftText = LeftBox->text();
     QString yRightText = RightBox->text();
     left = yLeftText.toInt();
     right = yRightText.toInt();
-    if (left > right) {
-        throw std::runtime_error("Error: left < right");
-    }
+	if (right - left < 6) {
+		throw std::runtime_error("right - left < 6");
+	}
 }
 
 void ProbabilityWidget::updateComboBox(QStringList const & namesMethods)

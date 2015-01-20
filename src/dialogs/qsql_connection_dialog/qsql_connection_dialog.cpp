@@ -7,7 +7,6 @@
 
 #include <QSqlDatabase>
 #include <QMessagebox>
-#include <QDebug>
 
 #include "qsql_connection_dialog.hpp"
 
@@ -26,8 +25,6 @@ QSqlConnectionDialog::QSqlConnectionDialog(QWidget *parent)
     drivers.removeAll("QODBC3");
     drivers.removeAll("QPSQL7");
     drivers.removeAll("QTDS7");
-	qDebug() << QSqlDatabase::drivers();
-	qDebug() << QApplication::libraryPaths();
 
     comboDriver->addItems(drivers);
 }

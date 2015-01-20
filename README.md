@@ -8,3 +8,5 @@ Dependence:
 2. MySql (qsqlmysql4.dll libmysql.dll)
 
 3. QWT
+
+4. GSL

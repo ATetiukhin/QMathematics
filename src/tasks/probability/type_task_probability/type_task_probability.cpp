@@ -53,10 +53,13 @@ void TypeTaskProbability::answerButtonClicked()
         }
 
         if (plugin->isRandom(sample, r)) {
-            ui_.updateResult("Yes");
+            ui_.updateResult("Good");
         } else {
-            ui_.updateResult("No");
+            ui_.updateResult("Do Not Use");
         }
+
+		QString s = QString::number(idSample) + "  " + QString::number(r);
+		ui_.textEdit->append(s);
     } catch (std::exception const & e) {
         ui_.updateResult(e.what());
     }

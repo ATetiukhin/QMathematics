@@ -22,9 +22,7 @@ public:
     Cdbinrnk();
     virtual ~Cdbinrnk();
 
-    void getFrequencies(QMap<double, double> &freqs, QVector<double> &sample) const;
-
-    bool isRandom(QVector<double> &sample, double r) const;
+	bool isRandom(QVector<double> &sample, double &r) const;
 };
 
 #endif /* End of 'cdbinrnk.hpp' file */

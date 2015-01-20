@@ -40,7 +40,6 @@ DatabaseHelper &DatabaseHelper::getInstance()
     if (!pInstance_) {
         pInstance_ = new DatabaseHelper();
         destroyer_.initialize(pInstance_);
-		//db_ = QSqlDatabase::addDatabase("QMYSQL");
 	}
 
     return *pInstance_;

@@ -16,7 +16,7 @@
 
 class ProbabilityWidget
     : public QWidget
-    , private Ui::ProbabilityWidgetUI
+    , public Ui::ProbabilityWidgetUI
 {
     Q_OBJECT
 public:

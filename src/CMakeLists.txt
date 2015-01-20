@@ -145,8 +145,6 @@ if (MSVC)
     source_group("Source Files\\TASKS\\PROBABILITY" FILES ${PROBABILITY_FILES})
     source_group("Source Files\\TASKS\\PROBABILITY\\PROBABILITY WIDGET" FILES ${PROBABILITY_WIDGET_FILES})
     source_group("Source Files\\TASKS\\PROBABILITY\\TYPE TASK PROBABILITY" FILES ${TYPE_TASK_PROBABILITY_FILES})
-
-	source_group("AUTOMOC" FILES QMathematics_automic.cpp)
 endif (MSVC)
 
 ####################################################################################################
@@ -154,9 +152,6 @@ endif (MSVC)
 add_executable(${APP_NAME} ${ALL_FILES})
 target_link_libraries(${APP_NAME} Qt4::QtCore Qt4::QtGui Qt4::QtScript Qt4::QtSql Qt4::QtSvg)
 target_link_libraries(${APP_NAME} optimized ${QWT_LIBRARY_RELEASE} debug ${QWT_LIBRARY_DEBUG})
-
-# Setting directory
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIRECTORY} CACHE STRING "" FORCE)
 
 # Project settings
 if (MSVC)
@@ -166,6 +161,7 @@ if (MSVC)
     set(CMAKE_CXX_FLAGS_RELEASE        "/MT /O2 /Ob2 /D NDEBUG " CACHE STRING "" FORCE)
     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/MT /Zi /O2 /Ob1 /D NDEBUG " CACHE STRING "" FORCE)
 
+	set(CMAKE_EXE_LINKER_FLAGS "/ignore:4099")
     set_target_properties(${APP_NAME} PROPERTIES LINK_FLAGS " /DYNAMICBASE:NO /FIXED")
 
 elseif (CMAKE_COMPILER_IS_GNUCXX)
@@ -175,6 +171,6 @@ elseif (CMAKE_COMPILER_IS_GNUCXX)
 
     set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++ " CACHE STRING "" FORCE)
 
-endif ()
+endif (MSVC)
 
 ####################################################################################################

@@ -35,9 +35,8 @@ int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 
 #ifdef _DEBUG
-	QStringList drivers = QSqlDatabase::drivers();
-	for (int i = 0; i < drivers.count(); i++)
-		qDebug() << drivers.at(i);
+	qDebug() << QSqlDatabase::drivers();
+	qDebug() << QApplication::libraryPaths();
 #endif /* _DEBUG */
 
 	//HANDLE hTempModule = ::LoadLibraryEx(".../Equation/build/src/plugins/Debug/newton.dll", 0, 0);
