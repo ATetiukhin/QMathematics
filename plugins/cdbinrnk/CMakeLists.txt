@@ -13,7 +13,7 @@ set(DIEHARD_RANK
 include_directories(../)
 
 add_library(${APP_NAME} SHARED ${PLUGIN_FILES} ${DIEHARD_RANK} ../plugin_probability.hpp)
-target_link_libraries(${APP_NAME} Qt4::QtCore ${GSL_LIBRARY})
+target_link_libraries(${APP_NAME} Qt4::QtCore ${GSL_LIB})
 
 if (MSVC)
     set(CMAKE_CXX_FLAGS "/EHsc /W3 /nologo /Zc:wchar_t " CACHE STRING "" FORCE)
